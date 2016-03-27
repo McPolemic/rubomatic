@@ -2,7 +2,7 @@ require 'rss'
 require 'open-uri'
 require 'transmission_api'
 
-URL = 'http://showrss.info/rss.php?user_id=17648&hd=null&proper=null'
+URL = 'http://showrss.info/user/43297.rss?magnets=true&namespaces=true&name=clean&quality=null&re=null'
 CACHE = "/tmp/feed_status.txt"
 
 class FileCache
