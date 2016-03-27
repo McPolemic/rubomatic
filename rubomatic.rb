@@ -26,8 +26,6 @@ end
 cache = FileCache.new CACHE
 
 transmission_api_client = TransmissionApi::Client.new(
-  #:username => "username",
-  #:password => "password",
   :url      => "http://127.0.0.1:9091/transmission/rpc"
 )
 
@@ -36,9 +34,8 @@ open(URL) do |rss|
   feed.items.each do |item|
     next if cache.exists? item.title
     puts "Adding #{item.title} to the download queue"
-    `open #{item.link}`
-    # torrent = transmission_api_client.create(item.link)
-    cache.set item.title
+    torrent = transmission_api_client.create(item.link)
+    cache.set(item.title)
   end
 
 end
